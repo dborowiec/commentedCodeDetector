@@ -1,0 +1,5763 @@
+studia/zao/Quake-III-Arena/code/splines/q_shared.cpp
+Comment from lines 113-116:
+ ============
+ Com_StringContains
+ ============
+ 
+
+Lines 113-116 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 142-145:
+ ============
+ Com_Filter
+ ============
+ 
+
+Lines 142-145 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 223-227:
+ ================
+ Com_HashString
+
+ ================
+ 
+
+Lines 223-227 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 248-251:
+ ============
+ Com_SkipPath
+ ============
+ 
+
+Lines 248-251 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 267-270:
+ ============
+ Com_StripExtension
+ ============
+ 
+
+Lines 267-270 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 280-283:
+ ==================
+ Com_DefaultExtension
+ ==================
+ 
+
+Lines 280-283 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 384-387:
+ ================
+ Swap_Init
+ ================
+ 
+
+Lines 384-387 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 415-418:
+ ===============
+ Com_ParseInfos
+ ===============
+ 
+
+Lines 415-418 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 524-529:
+ =============
+ Q_strncpyz
+  
+ Safe strncpy that ensures a trailing zero
+ =============
+ 
+
+Lines 524-529 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 826-829:
+ ===================
+ Info_RemoveKey
+ ===================
+ 
+
+Lines 826-829 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 882-888:
+ ==================
+ Info_Validate
+
+ Some characters are illegal in info strings because they
+ can mess up the server's parsing
+ ==================
+ 
+
+Lines 882-888 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 946-953:
+ ====================================================================
+
+
+
+ ===============
+ ParseHex
+ ===============
+ 
+
+Lines 946-953 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/code/splines/math_angles.cpp
+studia/zao/Quake-III-Arena/code/splines/util_str.cpp
+studia/zao/Quake-III-Arena/code/splines/math_vector.cpp
+studia/zao/Quake-III-Arena/code/splines/q_shared.hpp
+Comment from lines 315-315:
+  default
+
+Lines 315-315 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 338-338:
+  matches value in gcc v2 math.h
+
+Lines 338-338 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 448-448:
+ #define VectorCopy(a,b)			((b).x=(a).x,(b).y=(a).y,(b).z=(a).z])
+
+
+Lines 448-448 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/code/splines/splines.cpp
+Comment from lines 182-182:
+ int start = Sys_Milliseconds();
+
+Lines 182-182 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 202-257:
+ void idSplineList::draw(bool editMode) {
+ 	int i;
+ 	vec4_t yellow(1, 1, 0, 1);
+         
+ 	if (controlPoints.Num() == 0) {
+ 		return;
+ 	}
+
+ 	if (dirty) {
+ 		buildSpline();
+ 	}
+
+
+ 	qglColor3fv(controlColor);
+ 	qglPointSize(5);
+ 	
+ 	qglBegin(GL_POINTS);
+ 	for (i = 0; i < controlPoints.Num(); i++) {
+ 		qglVertex3fv(*controlPoints[i]);
+ 	}
+ 	qglEnd();
+ 	
+ 	if (editMode) {
+ 		for(i = 0; i < controlPoints.Num(); i++) {
+ 			glBox(activeColor, *controlPoints[i], 4);
+ 		}
+ 	}
+
+ 	//Draw the curve
+ 	qglColor3fv(pathColor);
+ 	qglBegin(GL_LINE_STRIP);
+ 	int count = splinePoints.Num();
+ 	for (i = 0; i < count; i++) {
+ 		qglVertex3fv(*splinePoints[i]);
+ 	}
+ 	qglEnd();
+
+ 	if (editMode) {
+ 		qglColor3fv(segmentColor);
+ 		qglPointSize(3);
+ 		qglBegin(GL_POINTS);
+ 		for (i = 0; i < count; i++) {
+ 			qglVertex3fv(*splinePoints[i]);
+ 		}
+ 		qglEnd();
+ 	}
+ 	if (count > 0) {
+ 		//assert(activeSegment >=0 && activeSegment < count);
+ 		if (activeSegment >=0 && activeSegment < count) {
+ 			glBox(activeColor, *splinePoints[activeSegment], 6);
+ 			glBox(yellow, *splinePoints[activeSegment], 8);
+ 		}
+ 	}
+
+ }
+ 
+
+
+Lines 202-257 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 300-300:
+ for(int i = 2; i < count - 1; i++) {
+
+Lines 300-300 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 350-350:
+ static long lastTime = -1;
+
+
+Lines 350-350 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 385-385:
+ Com_MatchToken( text, "{" );
+
+Lines 385-385 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 425-426:
+ Com_UngetToken();
+ Com_MatchToken( text, "}" );
+
+Lines 425-426 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 433-434:
+ s = va("\t\tname %s\n", name.c_str());
+ FS_Write(s.c_str(), s.length(), file);
+
+Lines 433-434 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 456-480:
+ 	if (!cameraSpline.validTime()) {
+ 		buildCamera();
+ 	}
+ 	origin = *cameraSpline.getSegmentPoint(segment);
+ 	
+
+ 	idVec3_t temp;
+
+ 	int numTargets = getTargetSpline()->controlPoints.Num();
+ 	int count = cameraSpline.splineTime.Num();
+ 	if (numTargets == 0) {
+ 		// follow the path
+ 		if (cameraSpline.getActiveSegment() < count - 1) {
+ 			temp = *cameraSpline.splinePoints[cameraSpline.getActiveSegment()+1];
+ 		}
+ 	} else if (numTargets == 1) {
+ 		temp = *getTargetSpline()->controlPoints[0];
+ 	} else {
+ 		temp = *getTargetSpline()->getSegmentPoint(segment);
+ 	}
+
+ 	temp -= origin;
+ 	temp.Normalize();
+ 	direction = temp;
+ 
+
+Lines 456-480 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 499-504:
+ idEntity *ent = NULL;
+ ent = level.FindTarget( ent, events[i]->getParam());
+ if (ent) {
+ 	ent->signal( SIG_TRIGGER );
+ 	ent->ProcessEvent( &EV_Activate, world );
+ }
+
+Lines 499-504 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 522-532:
+ 		// follow the path
+ 		if (cameraSpline.getActiveSegment() < count - 1) {
+ 			temp = *cameraSpline.splinePoints[cameraSpline.getActiveSegment()+1];
+ 			if (temp == origin) {
+ 				int index = cameraSpline.getActiveSegment() + 2;
+ 				while (temp == origin && index < count - 1) {
+ 					temp = *cameraSpline.splinePoints[index++];
+ 				}
+ 			}
+ 		}
+ 
+
+Lines 522-532 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 559-559:
+ int lastSwitch = 0;
+
+Lines 559-559 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 568-568:
+ idCameraEvent *ev = events[i];
+
+Lines 568-568 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 581-581:
+ targetWaits.Append(i);
+
+Lines 581-581 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 586-614:
+ 				// take the average delay between up to the next five segments
+ 				float adjust = atof(events[i]->getParam());
+ 				int index = events[i]->getSegment();
+ 				total = 0;
+ 				count = 0;
+
+ 				// get total amount of time over the remainder of the segment
+ 				for (j = index; j < cameraSpline.numSegments() - 1; j++) {
+ 					total += cameraSpline.getSegmentTime(j + 1) - cameraSpline.getSegmentTime(j);
+ 					count++;
+ 				}
+
+ 				// multiply that by the adjustment
+ 				double newTotal = total * adjust;
+ 				// what is the difference.. 
+ 				newTotal -= total;
+ 				totalTime += newTotal / 1000;
+
+ 				// per segment difference
+ 				newTotal /= count;
+ 				int additive = newTotal;
+
+ 				// now propogate that difference out to each segment
+ 				for (j = index; j < cameraSpline.numSegments(); j++) {
+ 					cameraSpline.addSegmentTime(j, additive);
+ 					additive += newTotal;
+ 				}
+ 				break;
+ 
+
+Lines 586-614 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/code/splines/math_quaternion.cpp
+studia/zao/Quake-III-Arena/code/splines/math_matrix.cpp
+studia/zao/Quake-III-Arena/code/splines/q_parse.cpp
+Comment from lines 53-56:
+ ===================
+ Com_BeginParseSession
+ ===================
+ 
+
+Lines 53-56 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 69-72:
+ ===================
+ Com_EndParseSession
+ ===================
+ 
+
+Lines 69-72 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 82-85:
+ ===================
+ Com_GetCurrentParseLine
+ ===================
+ 
+
+Lines 82-85 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 91-96:
+ ===================
+ Com_ScriptError
+
+ Prints the script name and line number in the message
+ ===================
+ 
+
+Lines 91-96 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 121-127:
+ ===================
+ Com_UngetToken
+
+ Calling this will make the next Com_Parse return
+ the current token instead of advancing the pointer
+ ===================
+ 
+
+Lines 121-127 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 357-360:
+ ===================
+ Com_Parse
+ ===================
+ 
+
+Lines 357-360 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 370-373:
+ ===================
+ Com_ParseOnLine
+ ===================
+ 
+
+Lines 370-373 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 385-388:
+ ==================
+ Com_MatchToken
+ ==================
+ 
+
+Lines 385-388 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 431-434:
+ =================
+ Com_SkipRestOfLine
+ =================
+ 
+
+Lines 431-434 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 451-454:
+ ====================
+ Com_ParseRestOfLine
+ ====================
+ 
+
+Lines 451-454 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/libs/cmdlib/cmdlib.cpp
+Comment from lines 10-11:
+  rad additions
+  11.29.99
+
+Lines 10-11 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 112-115:
+ ================
+ Q_filelength
+ ================
+ 
+
+Lines 112-115 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 176-179:
+ ==============
+ LoadFile
+ ==============
+ 
+
+Lines 176-179 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 210-215:
+ ==============
+ LoadFileNoCrash
+
+ returns -1 length if not present
+ ==============
+ 
+
+Lines 210-215 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 237-240:
+ ==============
+ SaveFile
+ ==============
+ 
+
+Lines 237-240 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 311-314:
+ ====================
+ Extract file parts
+ ====================
+ 
+
+Lines 311-314 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/libs/pak/unzip.cpp
+Comment from lines 1281-1305:
+     uLong x ;
+     int i;
+     int err;
+
+     err = unzlocal_getByte(fin,&i);
+     x = (uLong)i;
+     
+     if (err==UNZ_OK)
+         err = unzlocal_getByte(fin,&i);
+     x += ((uLong)i)<<8;
+
+     if (err==UNZ_OK)
+         err = unzlocal_getByte(fin,&i);
+     x += ((uLong)i)<<16;
+
+     if (err==UNZ_OK)
+         err = unzlocal_getByte(fin,&i);
+     x += ((uLong)i)<<24;
+    
+     if (err==UNZ_OK)
+         *pX = x;
+     else
+         *pX = 0;
+     return err;
+ 
+
+Lines 1281-1305 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1533-1533:
+ 	unzGoToFirstFile((unzFile)s);	
+
+Lines 1533-1533 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1899-1901:
+ 	else if ((err==UNZ_OK) && (uData!=s->cur_file_info.wVersion))
+ 		err=UNZ_BADZIPFILE;
+ 
+
+Lines 1899-1901 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2148-2152:
+ 			if ((pfile_in_zip_read_info->rest_read_uncompressed ==
+ 			         pfile_in_zip_read_info->stream.avail_out) &&
+ 				(pfile_in_zip_read_info->rest_read_compressed == 0))
+ 				flush = Z_FINISH;
+ 			
+
+Lines 2148-2152 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2391-2391:
+  make exclusive-or pattern from polynomial (0xedb88320L) 
+
+Lines 2391-2391 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3457-3461:
+ uInt *c;               /* 19 code lengths */
+ uInt *bb;              /* bits tree desired/actual depth */
+ inflate_huft * *tb; /* bits tree result */
+ inflate_huft *hp;       /* space for trees */
+ z_streamp z;            /* for messages */
+
+Lines 3457-3461 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4126-4126:
+  ========================================================================= 
+
+Lines 4126-4126 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/libs/pak/pakstuff.cpp
+Comment from lines 30-30:
+ #include "cmdlib.h"
+
+Lines 30-30 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 282-285:
+ ====================
+ Extract file parts
+ ====================
+ 
+
+Lines 282-285 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 567-568:
+  * Print the contents of the PACK directory in "outf".
+  
+
+Lines 567-568 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/libs/jpeg6/jdatasrc.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jcomapi.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jfdctflt.cpp
+Comment from lines 54-55:
+  * Perform the forward DCT on one block of samples.
+  
+
+
+Lines 54-55 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/libs/jpeg6/jdpostct.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdcoefct.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdcolor.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdapistd.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdapimin.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdinput.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jutils.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdmainct.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdmaster.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdmarker.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdhuff.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdtrans.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jddctmgr.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jpgload.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jidctflt.cpp
+Comment from lines 209-211:
+  2*c2 
+  2*(c2-c6) 
+  -2*(c2+c6) 
+
+
+Lines 209-211 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/libs/jpeg6/jmemmgr.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jdsample.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jmemnobs.cpp
+studia/zao/Quake-III-Arena/libs/jpeg6/jerror.cpp
+studia/zao/Quake-III-Arena/q3radiant/ToolWnd.cpp
+studia/zao/Quake-III-Arena/q3radiant/QGL_WIN.CPP
+studia/zao/Quake-III-Arena/q3radiant/VERTSEL.CPP
+Comment from lines 326-326:
+ SelectVertex (besti);
+
+Lines 326-326 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/SurfacePlugin.cpp
+studia/zao/Quake-III-Arena/q3radiant/SelectedFace.cpp
+Comment from lines 112-112:
+ strcpy( selected_face->texdef.name, pFaceData->m_TextureName );
+
+Lines 112-112 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/RADEditView.cpp
+Comment from lines 51-51:
+ }}AFX_MSG_MAP
+
+Lines 51-51 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/XYWnd.cpp
+Comment from lines 129-129:
+ m_bTiming = true;
+
+Lines 129-129 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 202-202:
+ LoadCursor (NULL,IDC_ARROW);
+
+Lines 202-202 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 232-235:
+ ============
+ WXY_WndProc
+ ============
+ 
+
+Lines 232-235 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 798-798:
+ else if (m_nTimerID != -1)
+
+Lines 798-798 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1253-1253:
+ Select_Brush(pBrush);
+
+Lines 1253-1253 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1273-1273:
+ Entity_LinkBrush(world_entity, n);
+
+Lines 1273-1273 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1471-1471:
+ pChild->AppendMenu(MF_STRING, nID++, "Smart_Rotating");
+
+Lines 1471-1471 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1549-1551:
+ --  else
+ --    XY_ToPoint(x, y, point);
+ --    //XY_ToPoint(x, y, point);
+
+Lines 1549-1551 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1565-1565:
+ point[2] = 0;
+
+Lines 1565-1565 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1581-1581:
+ point[1] = 0;
+
+Lines 1581-1581 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1593-1593:
+ point[2] = 0;
+
+Lines 1593-1593 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1599-1601:
+ point[0] = 0;
+ point[1] = m_vOrigin[0] + (x - m_nWidth / 2) / m_fScale;
+ point[2] = m_vOrigin[1] + (y - m_nHeight / 2) / m_fScale;
+
+Lines 1599-1601 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1609-1611:
+ point[1] = 0;
+ point[0] = m_vOrigin[0] + (x - m_nWidth / 2) / m_fScale;
+ point[2] = m_vOrigin[1] + (y - m_nHeight / 2) / m_fScale;
+
+Lines 1609-1611 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1674-1677:
+ Sys_GetCursorPos (&m_ptCursor.x, &m_ptCursor.y);
+
+  lbutton = manipulate selection
+  shift-LBUTTON = select
+
+Lines 1674-1677 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1797-1800:
+ ==============
+ NewBrushDrag
+ ==============
+ 
+
+Lines 1797-1800 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1852-1852:
+ 	Sys_UpdateWindows (W_ALL);
+
+Lines 1852-1852 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1858-1861:
+ ==============
+ XY_MouseMoved
+ ==============
+ 
+
+Lines 1858-1861 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1973-1974:
+ XY_Draw();
+ RedrawWindow(NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW);
+
+Lines 1973-1974 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1976-1976:
+ ::ShowCursor(TRUE);
+
+Lines 1976-1976 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1985-1997:
+ ============================================================================
+
+ DRAWING
+
+ ============================================================================
+ 
+
+
+
+ ==============
+ XY_DrawGrid
+ ==============
+ 
+
+Lines 1985-1997 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2015-2016:
+ int nDim1 = 0;
+ int nDim2 = 1;
+
+
+
+Lines 2015-2016 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2101-2101:
+ glColor4f(0, 0, 0, 0);
+
+Lines 2101-2101 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2139-2147:
+   if (true)
+   {
+ 		qglColor3f(g_qeglobals.d_savedinfo.colors[COLOR_GRIDMINOR]);
+ 		qglBegin (GL_LINES);
+   	qglVertex2f (x, yb);
+ 		qglVertex2f (x, ye);
+     qglEnd();
+   }
+   
+
+
+Lines 2139-2147 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2152-2155:
+ ==============
+ XY_DrawBlockGrid
+ ==============
+ 
+
+Lines 2152-2155 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2366-2369:
+ ==================
+ FilterBrush
+ ==================
+ 
+
+Lines 2366-2369 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2591-2594:
+ =============================================================
+
+  can be greatly simplified but per usual i am in a hurry 
+  which is not an excuse, just a fact
+
+Lines 2591-2594 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2725-2728:
+ ==============
+ XY_Draw
+ ==============
+ 
+
+Lines 2725-2728 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2794-2794:
+ glEnable (GL_LINE_SMOOTH);
+
+
+Lines 2794-2794 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3002-3002:
+ QE_CheckOpenGLForErrors();
+
+
+Lines 3002-3002 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3017-3020:
+ ==============
+ XY_Overlay
+ ==============
+ 
+
+Lines 3017-3020 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3125-3125:
+ brush_t* pList = (g_bSwitch) ? &g_brFrontSplits : &g_brBackSplits;
+
+Lines 3125-3125 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3226-3226:
+  delete this;
+
+Lines 3226-3226 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3393-3399:
+   CString strOut;
+   ::GetTempPath(1024, strOut.GetBuffer(1024));
+   strOut.ReleaseBuffer();
+   AddSlash(strOut);
+   strOut += "RadiantClipboard.$$$";
+   Map_SaveSelected(strOut.GetBuffer(0));
+ 
+
+
+Lines 3393-3399 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3423-3423:
+ Brush_AddToList (pClone, &g_brClipboard);
+
+Lines 3423-3423 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3436-3453:
+   if (g_brUndo.next != &g_brUndo)
+   {
+     g_bScreenUpdates = false; 
+     Select_Delete();
+ 	  for (brush_t* pBrush = g_brUndo.next ; pBrush != NULL && pBrush != &g_brUndo ; pBrush=pBrush->next)
+     {
+       brush_t* pClone = Brush_Clone(pBrush);
+     	Brush_AddToList (pClone, &active_brushes);
+ 			Entity_LinkBrush (pBrush->pUndoOwner, pClone);
+       Brush_Build(pClone);
+       Select_Brush(pClone);
+     }
+     CleanList(&g_brUndo);
+     g_bScreenUpdates = true; 
+     Sys_UpdateWindows(W_ALL);
+   }
+   else Sys_Printf("Nothing to undo.../n");
+ 
+
+Lines 3436-3453 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3539-3539:
+ pClone->owner = pBrush->owner;
+
+Lines 3539-3539 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3588-3588:
+ int nH = (m_ptDrag.y == 0) ? -1 : m_ptDrag.y;
+
+Lines 3588-3588 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3592-3593:
+ m_vOrigin[nDim1] -= m_ptDrag.x / m_fScale;
+ m_vOrigin[nDim1] -= m_ptDrag.x / m_fScale;
+
+Lines 3592-3593 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3599-3599:
+ CWnd::OnKeyUp(nChar, nRepCnt, nFlags);
+
+Lines 3599-3599 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/DlgEvent.cpp
+Comment from lines 40-40:
+ {{AFX_DATA_INIT(CDlgEvent)
+
+Lines 40-40 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 43-43:
+ }}AFX_DATA_INIT
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CDlgEvent)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 53-53:
+ }}AFX_DATA_MAP
+
+Lines 53-53 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/TextureBar.cpp
+Comment from lines 43-43:
+ {{AFX_DATA_INIT(CTextureBar)
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 50-50:
+ }}AFX_DATA_INIT
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 57-57:
+ {{AFX_DATA_MAP(CTextureBar)
+
+Lines 57-57 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Brush.cpp
+Comment from lines 77-89:
+ =============================================================================
+
+ 			TEXTURE COORDINATES
+
+ =============================================================================
+ 
+
+
+
+ ==================
+ textureAxisFromPlane
+ ==================
+ 
+
+Lines 77-89 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 127-133:
+ ================
+ SetShadeForPlane
+
+ Light different planes differently to
+ improve recognition
+ ================
+ 
+
+Lines 127-133 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 164-167:
+ ================
+ Face_Alloc
+ ================
+ 
+
+Lines 164-167 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 179-182:
+ ================
+ Face_Free
+ ================
+ 
+
+Lines 179-182 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 211-214:
+ ================
+ Face_Clone
+ ================
+ 
+
+Lines 211-214 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 229-234:
+ ================
+ Face_FullClone
+
+ makes an exact copy of the face
+ ================
+ 
+
+Lines 229-234 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 252-255:
+ ================
+ Clamp
+ ================
+ 
+
+Lines 252-255 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 264-267:
+ ================
+ Face_MoveTexture
+ ================
+ 
+
+Lines 264-267 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 309-312:
+ ================
+ Face_SetColor
+ ================
+ 
+
+Lines 309-312 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 324-325:
+ if (b->curveBrush)
+   shade = fCurveColor;
+
+Lines 324-325 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 427-430:
+ ================
+ Face_MakePlane
+ ================
+ 
+
+Lines 427-430 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 452-455:
+ ================
+ EmitTextureCoordinates
+ ================
+ 
+
+Lines 452-455 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 465-471:
+ ==========================================================================
+
+
+ ================
+ Brush_MakeFacePlanes
+ ================
+ 
+
+Lines 465-471 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 483-486:
+ ================
+ DrawBrushEntityName
+ ================
+ 
+
+Lines 483-486 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 557-562:
+ =================
+ Brush_MakeFaceWinding
+
+ returns the visible polygon on a face
+ =================
+ 
+
+Lines 557-562 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 615-618:
+ =================
+ Brush_SnapPlanepts
+ =================
+ 
+
+Lines 615-618 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 684-690:
+ ==============
+ Brush_SplitBrushByFace
+
+ The incoming brush is NOT freed.
+ The incoming face is NOT left referenced.
+ ==============
+ 
+
+Lines 684-690 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 743-749:
+ =================
+ Brush_BestSplitFace
+
+ returns the best face to split the brush with.
+ return NULL if the brush is convex
+ =================
+ 
+
+Lines 743-749 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 832-835:
+ =================
+ Brush_Convex
+ =================
+ 
+
+Lines 832-835 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1113-1121:
+ =================
+ Brush_MoveVertexes_old2
+
+ - The input brush must be convex
+ - The input brush must have face windings.
+ - The output brush will be convex.
+ - Returns true if the vertex movement is performed.
+ =================
+ 
+
+
+Lines 1113-1121 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1593-1596:
+ =================
+ Brush_InsertVertexBetween
+ =================
+ 
+
+Lines 1593-1596 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1642-1645:
+ =================
+ Brush_ResetFaceOriginals
+ =================
+ 
+
+Lines 1642-1645 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1748-1748:
+  set the "need" conversion flag
+
+Lines 1748-1748 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1896-1900:
+  
+ =================
+ Brush_GetKeyValue
+ =================
+ 
+
+Lines 1896-1900 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1926-1930:
+ =================
+ Brush_Write
+ save all brushes as Brush primitive format
+ =================
+ 
+
+Lines 1926-1930 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2050-2056:
+ =================
+ QERApp_MapPrintf_MEMFILE
+ callback for surface properties plugin
+ must fit a PFN_QERAPP_MAPPRINTF ( see isurfaceplugin.h )
+ =================
+ 
+  carefully initialize !
+
+Lines 2050-2056 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2375-2380:
+ =============
+ Brush_MakeSided
+
+ Makes the current brush have the given number of 2d sides
+ =============
+ 
+
+Lines 2375-2380 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2557-2560:
+ =============
+ Face_MemorySize
+ =============
+ 
+
+Lines 2557-2560 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2575-2578:
+ =============
+ Brush_MemorySize
+ =============
+ 
+
+Lines 2575-2578 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2838-2838:
+ Patch_Deselect(b->nPatchID);
+
+Lines 2838-2838 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2998-3004:
+ ==============
+ Brush_SelectFaceForDragging
+
+ Adds the faces planepts to move_points, and
+ rotates and adds the planepts of adjacent face if shear is set
+ ==============
+ 
+
+Lines 2998-3004 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3227-3232:
+ ==================
+ Brush_RemoveEmptyFaces
+
+ Frees any overconstraining faces
+ ==================
+ 
+
+Lines 3227-3232 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3355-3407:
+         //
+         vec3_t vTemp, vTemp2;
+         VectorSubtract(b->maxs, b->mins, vTemp);
+         VectorSubtract(vMax, vMin, vTemp2);
+         for (int i = 0; i < 3; i++)
+         {
+           if (vTemp[i] != 0)
+           {
+             vTemp2[i] /= vTemp[i];
+           }
+         }
+         vec3_t vMid, vMid2;
+         vMid[0] = vMid[1] = vMid[2] = 0.0;
+         vMid2[0] = vMid2[1] = vMid2[2] = 0.0;
+
+         for (int j = 0; j < 3; j++)
+         {
+           vMid2[j] = b->mins[j] + abs((b->maxs[j] - b->mins[j]) * 0.5);
+         }
+
+         //VectorSubtract(vMid2, vMid, vMid2);
+
+ 		    for (face_t* f=b->brush_faces ; f ; f=f->next)
+ 		    {
+ 			    for (int i=0 ; i<3 ; i++)
+ 			    {
+
+             // scale
+             VectorSubtract(f->planepts[i], vMid2, f->planepts[i]);
+             f->planepts[i][0] *= vTemp2[0];
+             f->planepts[i][1] *= vTemp2[1];
+             f->planepts[i][2] *= vTemp2[2];
+             VectorAdd(f->planepts[i], vMid2, f->planepts[i]);
+           }
+         }
+
+         //Brush_Center(b, b->owner->origin);
+
+         //Brush_SnapToGrid(b);
+
+         float a = FloatForKey (b->owner, "angle");
+         if (a)
+         {
+           vec3_t vAngle;
+           vAngle[0] = vAngle[1] = 0;
+           vAngle[2] = a;
+           Brush_Rotate(b, vAngle, b->owner->origin);
+         }
+         else
+         {
+           Brush_Build(b, true);
+ 
+         }
+
+
+Lines 3355-3407 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3473-3481:
+ for (i = 0; i < 3; i++)
+ {
+   v[i] -= (pEclass->mins[i] - b->mins[i]);
+ }
+
+ if (model->nModelPosition)
+ {
+ v[2] = b->mins[2] - (pEclass->mins[2]);
+ }
+
+
+Lines 3473-3481 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3661-3669:
+         if (a)
+         {
+           vec3_t vAngle;
+           vAngle[0] = vAngle[1] = 0;
+           vAngle[2] = a;
+           VectorRotate(mins, vAngle, b->owner->origin, mins);
+           VectorRotate(maxs, vAngle, b->owner->origin, maxs);
+         }
+ 
+
+Lines 3661-3669 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3707-3744:
+ //++timo moved out to mahlib.h
+ //++timo remove
+ void AngleVectors (vec3_t angles, vec3_t forward, vec3_t right, vec3_t up)
+ {
+ 	float		angle;
+ 	static float		sr, sp, sy, cr, cp, cy;
+ 	// static to help MS compiler fp bugs
+
+ 	angle = angles[YAW] * Q_PI / 180;
+ 	sy = sin(angle);
+ 	cy = cos(angle);
+ 	angle = angles[PITCH] * Q_PI / 180;
+ 	sp = sin(angle);
+ 	cp = cos(angle);
+ 	angle = angles[ROLL] * Q_PI / 180;
+ 	sr = sin(angle);
+ 	cr = cos(angle);
+
+ 	if (forward)
+ 	{
+ 		forward[0] = cp*cy;
+ 		forward[1] = cp*sy;
+ 		forward[2] = -sp;
+ 	}
+ 	if (right)
+ 	{
+ 		right[0] = (-1*sr*sp*cy+-1*cr*-sy);
+ 		right[1] = (-1*sr*sp*sy+-1*cr*cy);
+ 		right[2] = -1*sr*cp;
+ 	}
+ 	if (up)
+ 	{
+ 		up[0] = (cr*sp*cy+-sr*-sy);
+ 		up[1] = (cr*sp*sy+-sr*cy);
+ 		up[2] = cr*cp;
+ 	}
+ }
+ 
+
+Lines 3707-3744 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4005-4009:
+ --qglTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+ --qglBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+ --qglDisable(GL_DEPTH_TEST);
+ --qglBlendFunc (GL_SRC_ALPHA, GL_DST_ALPHA);
+ --qglEnable (GL_BLEND);
+
+Lines 4005-4009 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4055-4055:
+ if (nDrawMode == cd_light)
+
+Lines 4055-4055 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4207-4210:
+ if (b->alphaBrush && !(face->texdef.flags & SURF_ALPHA))
+   continue;
+
+  draw the polygon
+
+Lines 4207-4210 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4222-4225:
+ ============
+ Brush_Move
+ ============
+ 
+
+Lines 4222-4225 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4247-4247:
+ Patch_Move(b->nPatchID, move);
+
+Lines 4247-4247 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/PMESH.CPP
+Comment from lines 184-187:
+ ==================
+ Patch_MemorySize
+ ==================
+ 
+
+Lines 184-187 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 196-199:
+ ===============
+ InterpolateInteriorPoints
+ ===============
+ 
+
+Lines 196-199 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 240-244:
+ =================
+ MakeMeshNormals
+
+ =================
+ 
+
+Lines 240-244 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 376-376:
+ continue;
+
+Lines 376-376 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 387-390:
+ ==================
+ Patch_CalcBounds
+ ==================
+ 
+
+Lines 387-390 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 414-417:
+ ==================
+ Brush_RebuildBrush
+ ==================
+ 
+
+Lines 414-417 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 629-632:
+ ==================
+ Patch_Height
+ ==================
+ 
+
+Lines 629-632 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 660-666:
+ ==================
+ Patch_Naturalize
+ ==================
+ texture = TotalTexture * LengthToThisControlPoint / TotalControlPointLength
+
+ dist( this control point to first control point ) / dist ( last control pt to first)
+ 
+
+Lines 660-666 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1118-1119:
+ --Patch_CalcBounds(p, vMin, vMax);
+ --Brush_RebuildBrush(p->pSymbiot, vMin, vMax);
+
+Lines 1118-1119 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1454-1454:
+ Select_Brush(brushParent);
+
+
+Lines 1454-1454 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1460-1463:
+ ===============
+ BrushToPatchMesh
+ ===============
+ 
+
+Lines 1460-1463 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1620-1661:
+   if (bEndcap || bBevel)
+   {
+     if (bInverted)
+     {
+       for ( i = 0 ; i < p->height ; i ++)
+       {
+         if (bBevel)
+         {
+           VectorCopy(p->ctrl[7][i], p->ctrl[0][i]);
+           VectorCopy(p->ctrl[7][i], p->ctrl[8][i]);
+           VectorCopy(p->ctrl[3][i], p->ctrl[2][i]);
+           VectorCopy(p->ctrl[5][i], p->ctrl[1][i]);
+           VectorCopy(p->ctrl[5][i], p->ctrl[4][i]);
+           VectorCopy(p->ctrl[5][i], p->ctrl[6][i]);
+         }
+         else
+         {
+           VectorCopy(p->ctrl[4][i], p->ctrl[8][i]);
+           VectorCopy(p->ctrl[1][i], p->ctrl[0][i]);
+           VectorCopy(p->ctrl[1][i], p->ctrl[10][i]);
+           VectorCopy(p->ctrl[3][i], p->ctrl[2][i]);
+           VectorCopy(p->ctrl[5][i], p->ctrl[4][i]);
+           VectorCopy(p->ctrl[7][i], p->ctrl[6][i]);
+           VectorCopy(p->ctrl[5][i], p->ctrl[7][i]);
+           VectorCopy(p->ctrl[3][i], p->ctrl[9][i]);
+         }
+       }
+     }
+     else
+     {
+       for ( i = 0 ; i < p->height ; i ++)
+       {
+         VectorCopy(p->ctrl[1][i], p->ctrl[2][i]);
+         VectorCopy(p->ctrl[7][i], p->ctrl[6][i]);
+         if (bBevel)
+         {
+           VectorCopy(p->ctrl[5][i], p->ctrl[4][i]);
+         }
+       }
+     }
+   }
+ 
+
+Lines 1620-1661 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1691-1694:
+ ==================
+ Patch_GenericMesh
+ ==================
+ 
+
+Lines 1691-1694 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1765-1768:
+ ==================
+ PointInMoveList
+ ==================
+ 
+
+Lines 1765-1768 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1780-1783:
+ ==================
+ PointValueInMoveList
+ ==================
+ 
+
+Lines 1780-1783 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1796-1799:
+ ==================
+ RemovePointFromMoveList
+ ==================
+ 
+
+Lines 1796-1799 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1814-1817:
+ ==================
+ ColumnSelected
+ ==================
+ 
+
+Lines 1814-1817 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1829-1832:
+ ==================
+ AddPoint
+ ==================
+ 
+
+Lines 1829-1832 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1925-1928:
+ ==================
+ SelectRow
+ ==================
+ 
+
+Lines 1925-1928 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1941-1944:
+ ==================
+ SelectColumn
+ ==================
+ 
+
+Lines 1941-1944 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1958-1961:
+ ==================
+ AddPatchMovePoint
+ ==================
+ 
+
+Lines 1958-1961 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2025-2028:
+ ==================
+ Patch_UpdateSelected
+ ==================
+ 
+
+Lines 2025-2028 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2073-2076:
+ ===============
+ SampleSinglePatch
+ ===============
+ 
+
+Lines 2073-2076 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2119-2122:
+ ===================
+ DrawSinglePatch
+ ===================
+ 
+
+Lines 2119-2122 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2150-2164:
+       if (nCount >= 0)
+       {
+         VectorCopy(verts[i+1][j], vNormals[nCount]);
+       }
+       nCount++;
+       if (nCount == 3)
+       {
+         VectorSubtract(vNormals[0], vNormals[1], vNormals[0]);
+         VectorSubtract(vNormals[1], vNormals[2], vNormals[1]);
+         CrossProduct(vNormals[0], vNormals[1], vNormals[2]);
+         //VectorNormalize(vNormals[2]);
+         qglNormal3fv(vNormals[2]);
+         nCount = -1;
+       }
+ 
+
+Lines 2150-2164 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2199-2204:
+ --float fColor[3];
+ --if (bShade)
+ --{
+ --  face_t *f = pm->pSymbiot->brush_faces;
+ --  _SetColor(f, fColor);
+ --}
+
+Lines 2199-2204 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2543-2546:
+ ==================
+ Patch_DrawXY
+ ==================
+ 
+
+Lines 2543-2546 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2553-2554:
+ qglDisable (GL_LINE_STIPPLE);
+ qglLineWidth (1);
+
+Lines 2553-2554 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2569-2572:
+ ==================
+ Patch_DrawCam
+ ==================
+ 
+
+Lines 2569-2572 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2598-2598:
+ qglEnable(GL_NORMALIZE);
+
+Lines 2598-2598 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2606-2607:
+ qglEnable ( GL_BLEND );
+ qglBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+Lines 2606-2607 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2613-2613:
+ qglDisable(GL_TEXTURE_2D);
+
+Lines 2613-2613 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2654-2657:
+ 
+ ================
+ Patch_BuildPoints
+ ================
+
+Lines 2654-2657 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2678-2682:
+ 
+ ===============
+ Patch_WriteFile
+ ===============
+ 
+
+Lines 2678-2682 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2696-2696:
+  %s saved on %s\n", name, ctime(&ltime) );
+
+
+Lines 2696-2696 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2727-2730:
+ ==================
+ Patch_Move
+ ==================
+ 
+
+Lines 2727-2730 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2752-2755:
+ ==================
+ Patch_ApplyMatrix
+ ==================
+ 
+
+Lines 2752-2755 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2784-2787:
+ ==================
+ Patch_EditPatch
+ ==================
+ 
+
+Lines 2784-2787 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2873-2876:
+ ==================
+ Patch_Delete
+ ==================
+ 
+
+Lines 2873-2876 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2896-2902:
+  bump the array down
+ for (int i = n; i < numPatchMeshes; i++)
+ {
+   patchMeshes[i].pSymbiot->nPatchID--;
+   patchMeshes[i] = patchMeshes[i+1];
+ }
+ numPatchMeshes--;
+
+Lines 2896-2902 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2908-2911:
+ ==================
+ Patch_Scale
+ ==================
+ 
+
+Lines 2908-2911 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2940-2943:
+ ==================
+ Patch_Cleanup
+ ==================
+ 
+
+Lines 2940-2943 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2953-2956:
+ ==================
+ Patch_SetView
+ ==================
+ 
+
+Lines 2953-2956 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2965-2969:
+ ==================
+ Patch_SetTexture
+ ==================
+ 
+  FIXME: need array validation throughout
+
+Lines 2965-2969 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2997-3000:
+ ==================
+ Patch_DragScale
+ ==================
+ 
+
+Lines 2997-3000 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3015-3015:
+ Patch_Move(n, vMove, true);
+
+Lines 3015-3015 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3063-3066:
+ ==================
+ Patch_AddRow
+ ==================
+ 
+
+Lines 3063-3066 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3102-3105:
+ ==================
+ Patch_InsertColumn
+ ==================
+ 
+
+Lines 3102-3105 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3156-3159:
+ ==================
+ Patch_InsertRow
+ ==================
+ 
+
+Lines 3156-3159 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3210-3213:
+ ==================
+ Patch_RemoveRow
+ ==================
+ 
+
+Lines 3210-3213 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3237-3240:
+ ==================
+ Patch_RemoveColumn
+ ==================
+ 
+
+Lines 3237-3240 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3264-3267:
+ ==================
+ Patch_AdjustColumns
+ ==================
+ 
+
+Lines 3264-3267 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3313-3316:
+ ==================
+ Patch_AdjustRows
+ ==================
+ 
+
+Lines 3313-3316 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3336-3342:
+ vTemp[0] = vTemp[1] = vTemp[2] = 0;
+ for (h = 0; h < p->height - nRows; h ++)
+ {
+   VectorAdd(vTemp, p->ctrl[w][h], vTemp);
+ }
+
+  amount per cycle
+
+Lines 3336-3342 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3387-3393:
+ vTemp[0] = vTemp[1] = vTemp[2] = 0;
+ for (h = 0; h < p->height - nRows; h ++)
+ {
+   VectorAdd(vTemp, p->ctrl[w][h], vTemp);
+ }
+
+  amount per cycle
+
+Lines 3387-3393 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3414-3417:
+ ==================
+ Patch_AdjustColumns
+ ==================
+ 
+
+Lines 3414-3417 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3460-3463:
+ ==================
+ Patch_AdjustSelected
+ ==================
+ 
+
+Lines 3460-3463 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3508-3511:
+ ==================
+ Patch_AdjustSelectedRowCols
+ ==================
+ 
+
+Lines 3508-3511 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3569-3572:
+ --if (bOld)
+ --{
+ --  return Patch_ParseOld();
+ --}
+
+
+Lines 3569-3572 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3605-3605:
+  width, height, flags (currently only negative)
+
+Lines 3605-3605 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3676-3679:
+ ==================
+ Patch_Write 
+ ==================
+ 
+
+Lines 3676-3679 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3686-3686:
+ --MemFile_fprintf(file, " {\n  patchDef3\n  {\n");
+
+Lines 3686-3686 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3776-3779:
+ ==================
+ Patch_RotateTexture
+ ==================
+ 
+
+Lines 3776-3779 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3802-3805:
+ ==================
+ Patch_ScaleTexture
+ ==================
+ 
+
+Lines 3802-3805 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3839-3842:
+ ==================
+ Patch_ShiftTexture
+ ==================
+ 
+
+Lines 3839-3842 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3845-3848:
+ if (fx)
+   fx = (fx > 0) ? 0.1 : -0.1;
+ if (fy)
+   fy = (fy > 0) ? 0.1 : -0.1;
+
+
+Lines 3845-3848 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3883-3886:
+ ==================
+ Patch_ToggleInverted
+ ==================
+ 
+
+Lines 3883-3886 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3908-3911:
+ ==================
+ Patch_ToggleInverted
+ ==================
+ 
+
+Lines 3908-3911 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3977-3980:
+ ==================
+ Patch_Restore
+ ==================
+ 
+
+Lines 3977-3980 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4965-4965:
+ strcpy(p->d_texture->name, pReplace);
+
+Lines 4965-4965 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 5084-5088:
+  
+ =================
+ Patch_GetKeyValue
+ =================
+ 
+
+Lines 5084-5088 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Undo.cpp
+Comment from lines 98-101:
+ =============
+ Undo_ClearRedo
+ =============
+ 
+
+Lines 98-101 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 168-171:
+ =============
+ Undo_SetMaxSize
+ =============
+ 
+
+Lines 168-171 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 180-183:
+ =============
+ Undo_GetMaxSize
+ =============
+ 
+
+Lines 180-183 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 212-215:
+ =============
+ Undo_FreeFirstUndo
+ =============
+ 
+
+Lines 212-215 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 245-248:
+ =============
+ Undo_GeneralStart
+ =============
+ 
+
+Lines 245-248 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 317-320:
+ =============
+ Undo_BrushInUndo
+ =============
+ 
+
+Lines 317-320 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 333-336:
+ =============
+ Undo_EntityInUndo
+ =============
+ 
+
+Lines 333-336 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 349-352:
+ =============
+ Undo_Start
+ =============
+ 
+
+Lines 349-352 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 360-363:
+ =============
+ Undo_AddBrush
+ =============
+ 
+
+Lines 360-363 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 390-393:
+ =============
+ Undo_AddBrushList
+ =============
+ 
+
+Lines 390-393 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 432-435:
+ =============
+ Undo_EndBrush
+ =============
+ 
+
+Lines 432-435 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 452-455:
+ =============
+ Undo_EndBrushList
+ =============
+ 
+
+Lines 452-455 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 475-478:
+ =============
+ Undo_AddEntity
+ =============
+ 
+
+Lines 475-478 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 507-510:
+ =============
+ Undo_EndEntity
+ =============
+ 
+
+Lines 507-510 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 534-537:
+ =============
+ Undo_End
+ =============
+ 
+
+Lines 534-537 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 564-567:
+ =============
+ Undo_Undo
+ =============
+ 
+
+Lines 564-567 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 715-716:
+ build the brush
+ Brush_Build(pBrush);
+
+Lines 715-716 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 734-737:
+ =============
+ Undo_Redo
+ =============
+ 
+
+Lines 734-737 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 860-863:
+ =============
+ Undo_RedoAvailable
+ =============
+ 
+
+Lines 860-863 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/WIN_CAM.CPP
+Comment from lines 27-30:
+ ============
+ CameraWndProc
+ ============
+ 
+
+Lines 27-30 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 224-227:
+ ==============
+ WCam_Create
+ ==============
+ 
+
+Lines 224-227 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/TextureLayout.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CTextureLayout)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 44-44:
+ }}AFX_DATA_INIT
+
+Lines 44-44 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 51-51:
+ {{AFX_DATA_MAP(CTextureLayout)
+
+Lines 51-51 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 54-54:
+ }}AFX_DATA_MAP
+
+Lines 54-54 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 59-60:
+ {{AFX_MSG_MAP(CTextureLayout)
+ }}AFX_MSG_MAP
+
+Lines 59-60 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/RADEditWnd.cpp
+Comment from lines 50-50:
+ }}AFX_MSG_MAP
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Z.CPP
+Comment from lines 56-59:
+ ==============
+ Z_MouseDown
+ ==============
+ 
+
+Lines 56-59 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 93-93:
+ 		|| (buttons == (MK_MBUTTON|MK_CONTROL))
+
+Lines 93-93 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 113-116:
+ ==============
+ Z_MouseUp
+ ==============
+ 
+
+Lines 113-116 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 123-126:
+ ==============
+ Z_MouseMoved
+ ==============
+ 
+
+Lines 123-126 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 161-173:
+ ============================================================================
+
+ DRAWING
+
+ ============================================================================
+ 
+
+
+
+ ==============
+ Z_DrawGrid
+ ==============
+ 
+
+Lines 161-173 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 265-271:
+ HACK
+
+
+ ==============
+ Z_Draw
+ ==============
+ 
+
+Lines 265-271 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/EntityListDlg.cpp
+Comment from lines 41-42:
+ {{AFX_DATA_INIT(CEntityListDlg)
+ }}AFX_DATA_INIT
+
+Lines 41-42 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 49-49:
+ {{AFX_DATA_MAP(CEntityListDlg)
+
+Lines 49-49 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_DATA_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 61-61:
+ }}AFX_MSG_MAP
+
+Lines 61-61 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/SELECT.CPP
+Comment from lines 39-42:
+ ===========
+ Test_Ray
+ ===========
+ 
+
+Lines 39-42 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 75-76:
+ if (!g_bShowPatchBounds && brush->patchBrush)
+   continue;
+
+
+Lines 75-76 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 147-148:
+ if (!g_bShowPatchBounds && brush->patchBrush)
+   continue;
+
+
+Lines 147-148 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 209-213:
+ ============
+ Select_Brush
+
+ ============
+ 
+
+Lines 209-213 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 221-221:
+ selected_face = NULL;
+
+Lines 221-221 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 226-227:
+ if (brush->patchBrush)
+   Patch_Select(brush->nPatchID);
+
+
+Lines 226-227 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 271-276:
+ ============
+ Select_Ray
+
+ If the origin is inside a brush, that brush will be ignored.
+ ============
+ 
+
+Lines 271-276 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 341-341:
+ selected_face = NULL;
+
+Lines 341-341 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 352-352:
+ Patch_Delete(brush->nPatchID);
+
+Lines 352-352 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 387-387:
+ selected_face = NULL;
+
+Lines 387-387 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 419-422:
+ ============
+ Select_Move
+ ============
+ 
+
+Lines 419-422 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 438-438:
+ 	Sys_UpdateWindows (W_ALL);
+
+Lines 438-438 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 442-448:
+ ============
+ Select_Clone
+
+ Creates an exact duplicate of the selection in place, then moves
+ the selected brushes off of their old positions
+ ============
+ 
+
+Lines 442-448 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 584-589:
+ ================================================================
+
+   TRANSFORMATIONS
+
+ ================================================================
+ 
+
+
+Lines 584-589 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 682-682:
+ Patch_ApplyMatrix(b->nPatchID, select_origin, select_matrix);
+
+Lines 682-682 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 715-715:
+  using scale[0] and scale[1]
+
+Lines 715-715 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 793-793:
+  projecting back on (ex,ey)
+
+Lines 793-793 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 948-948:
+ Patch_Scale(b->nPatchID, select_origin, v);
+
+Lines 948-948 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1055-1060:
+ ================================================================
+
+ GROUP SELECTIONS
+
+ ================================================================
+ 
+
+
+Lines 1055-1060 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1225-1230:
+ =============
+ Select_Ungroup
+
+ Turn the currently selected entity back into normal brushes
+ =============
+ 
+
+Lines 1225-1230 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1249-1250:
+ Brush_RemoveFromList (b);
+ Brush_AddToList (b, &active_brushes);
+
+Lines 1249-1250 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1271-1274:
+ ====================
+ Select_MakeStructural
+ ====================
+ 
+
+Lines 1271-1274 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1327-1327:
+ Patch_ShiftTexture(b->nPatchID, x, y);
+
+Lines 1327-1327 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1480-1480:
+ Patch_RotateTexture(b->nPatchID, amt);
+
+Lines 1480-1480 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1540-1540:
+ strcpy(pFace->texdef.name, pReplace);
+
+Lines 1540-1540 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1724-1727:
+ ============
+ Select_Invert
+ ============
+ 
+
+Lines 1724-1727 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1767-1771:
+  
+ ===========
+ Select_Name
+ ===========
+ 
+
+Lines 1767-1771 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1783-1788:
+  
+ =================
+ Select_AddToGroup
+ add selected brushes to a group, update the tree
+ =================
+ 
+
+Lines 1783-1788 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/cbrushstub.cpp
+studia/zao/Quake-III-Arena/q3radiant/TextureLoad.cpp
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CTextureLoad)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_DATA_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 57-58:
+ {{AFX_MSG_MAP(CTextureLoad)
+ }}AFX_MSG_MAP
+
+Lines 57-58 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/MAP.CPP
+Comment from lines 212-215:
+ ================
+ Map_Free
+ ================
+ 
+
+Lines 212-215 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 292-295:
+ ================
+ Map_LoadFile
+ ================
+ 
+
+Lines 292-295 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 304-304:
+ SetInspectorMode(W_CONSOLE);
+
+
+Lines 304-304 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 414-417:
+ ===========
+ Map_SaveFile
+ ===========
+ 
+
+Lines 414-417 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 522-525:
+ ===========
+ Map_New
+ ===========
+ 
+
+Lines 522-525 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 554-559:
+ ===========================================================
+
+   REGION
+
+ ===========================================================
+ 
+
+
+Lines 554-559 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 567-572:
+ ===========
+ AddRegionBrushes
+
+ a regioned map will have temp walls put up at the region boundary
+ ===========
+ 
+
+Lines 567-572 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 583-583:
+ strcpy (td.name, "REGION");
+
+Lines 583-583 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 642-647:
+ ===========
+ Map_RegionOff
+
+ Other filtering options may still be on
+ ===========
+ 
+
+Lines 642-647 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 696-699:
+ ========================
+ Map_RegionSelectedBrushes
+ ========================
+ 
+
+Lines 696-699 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 732-735:
+ ===========
+ Map_RegionXY
+ ===========
+ 
+
+Lines 732-735 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 750-753:
+ ===========
+ Map_RegionTallBrush
+ ===========
+ 
+
+Lines 750-753 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 775-778:
+ ===========
+ Map_RegionBrush
+ ===========
+ 
+
+Lines 775-778 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 918-921:
+ if (strTarget.GetLength() > 0)
+   SetKeyValue(ent, "target", strTarget.GetBuffer(0));
+
+  add the entity to the end of the entity list
+
+Lines 918-921 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 936-937:
+ ::ShowWindow(g_qeglobals.d_hwndEntity, FALSE);
+ ::LockWindowUpdate(g_qeglobals.d_hwndEntity);
+
+Lines 936-937 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 954-954:
+ Sys_MarkMapModified();
+
+Lines 954-954 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 962-966:
+ 
+ ================
+ Map_ImportFile
+ ================
+ 
+
+Lines 962-966 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Win_main.cpp
+Comment from lines 473-477:
+ =============
+ DoColor
+
+ =============
+ 
+
+
+Lines 473-477 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 497-499:
+ {{AFX_DATA(CMyColorDialog)
+ }}AFX_DATA
+  Overrides
+
+Lines 497-499 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 510-512:
+  Generated message map functions
+ {{AFX_MSG(CMyColorDialog)
+ }}AFX_MSG
+
+Lines 510-512 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 550-551:
+ {{AFX_DATA_INIT(CMyColorDialog)
+ }}AFX_DATA_INIT
+
+Lines 550-551 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 567-568:
+ {{AFX_DATA_MAP(CMyColorDialog)
+ }}AFX_DATA_MAP
+
+Lines 567-568 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 572-573:
+ {{AFX_MSG_MAP(CMyColorDialog)
+ }}AFX_MSG_MAP
+
+Lines 572-573 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 680-683:
+ ==============
+ Main_Create
+ ==============
+ 
+
+
+Lines 680-683 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 779-784:
+ =============================================================
+
+ REGISTRY INFO
+
+ =============================================================
+ 
+
+
+Lines 779-784 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 893-898:
+ ===============================================================
+
+   STATUS WINDOW
+
+ ===============================================================
+ 
+
+
+Lines 893-898 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 908-908:
+ Sys_Status( numbrushbuffer, 2 );
+
+Lines 908-908 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/dlgcamera.cpp
+Comment from lines 85-85:
+ {{AFX_DATA_INIT(CDlgCamera)
+
+Lines 85-85 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 93-93:
+ }}AFX_DATA_INIT
+
+Lines 93-93 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 100-100:
+ {{AFX_DATA_MAP(CDlgCamera)
+
+Lines 100-100 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 236-237:
+ m_currentSegment = g_splineList->getActiveSegment();
+ m_numSegments = g_splineList->numSegments();
+
+Lines 236-237 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 313-320:
+ 	if (n < 0) {
+ 		n = 0;
+ 	} else if (n >= g_splineList->numSegments()) {
+ 		if (g_splineList->numSegments() == 0) {
+ 			g_splineList->buildCamera();
+ 		}
+ 		n = g_splineList->numSegments() - 1;
+ 	}
+
+Lines 313-320 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/FNMATCH.CPP
+studia/zao/Quake-III-Arena/q3radiant/RadiantView.cpp
+studia/zao/Quake-III-Arena/q3radiant/cameratargetdlg.cpp
+Comment from lines 40-40:
+ {{AFX_DATA_INIT(CCameraTargetDlg)
+
+Lines 40-40 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 43-43:
+ }}AFX_DATA_INIT
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CCameraTargetDlg)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 53-53:
+ }}AFX_DATA_MAP
+
+Lines 53-53 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 60-60:
+ }}AFX_MSG_MAP
+
+Lines 60-60 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/terrain.cpp
+Comment from lines 75-79:
+  
+ =================
+ Terrain_GetKeyValue
+ =================
+ 
+
+Lines 75-79 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 88-91:
+ ==================
+ Terrain_MemorySize
+ ==================
+ 
+
+Lines 88-91 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 657-657:
+ for( x = 0; x < num; x++, vert++ ) {
+
+Lines 657-657 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 922-924:
+ int			n;
+ float			x1;
+ float			y1;
+
+Lines 922-924 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1316-1321:
+ brush_t *pb;
+ terrainMesh_t *p;
+ int i;
+ int j;
+
+ 	g_qeglobals.d_numpoints = 0;
+
+Lines 1316-1321 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1402-1402:
+ for( pb = selected_brushes.next; pb != &selected_brushes; pb = pb->next ) {
+
+Lines 1402-1402 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1481-1481:
+ 	for( pb = selected_brushes.next; pb != &selected_brushes; pb = pb->next ) {
+
+Lines 1481-1481 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1665-1670:
+ ============
+ Select_TerrainFace
+
+ Select the face
+ ============
+ 
+
+Lines 1665-1670 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1716-1716:
+ Terrain_AddTexture( face->texture );
+
+Lines 1716-1716 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1730-1730:
+ g_qeglobals.d_terrainFalloff	= TERRAIN_FALLOFF_LINEAR;
+
+Lines 1730-1730 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1733-1733:
+ g_qeglobals.d_terrainBrush		= TERRAIN_BRUSH_SQUARE;
+
+Lines 1733-1733 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/ScaleDialog.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CScaleDialog)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 45-45:
+ }}AFX_DATA_INIT
+
+Lines 45-45 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ {{AFX_DATA_MAP(CScaleDialog)
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 56-56:
+ }}AFX_DATA_MAP
+
+Lines 56-56 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/DialogInfo.cpp
+Comment from lines 64-65:
+ {{AFX_DATA_INIT(CDialogInfo)
+ }}AFX_DATA_INIT
+
+Lines 64-65 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 72-72:
+ {{AFX_DATA_MAP(CDialogInfo)
+
+Lines 72-72 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 74-74:
+ }}AFX_DATA_MAP
+
+Lines 74-74 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 79-80:
+ {{AFX_MSG_MAP(CDialogInfo)
+ }}AFX_MSG_MAP
+
+Lines 79-80 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/FindTextureDlg.cpp
+Comment from lines 59-59:
+ {{AFX_DATA_INIT(CFindTextureDlg)
+
+Lines 59-59 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 65-65:
+ }}AFX_DATA_INIT
+
+Lines 65-65 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 72-72:
+ {{AFX_DATA_MAP(CFindTextureDlg)
+
+Lines 72-72 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 78-78:
+ }}AFX_DATA_MAP
+
+Lines 78-78 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 87-87:
+ }}AFX_MSG_MAP
+
+Lines 87-87 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/NewProjDlg.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CNewProjDlg)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 43-43:
+ }}AFX_DATA_INIT
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CNewProjDlg)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_DATA_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/ShaderInfo.cpp
+studia/zao/Quake-III-Arena/q3radiant/SurfaceDlg.cpp
+Comment from lines 48-48:
+ =NULL
+Lines 48-48 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 51-51:
+ {{AFX_DATA_INIT(CSurfaceDlg)
+
+Lines 51-51 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 54-54:
+ }}AFX_DATA_INIT
+
+Lines 54-54 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 61-61:
+ {{AFX_DATA_MAP(CSurfaceDlg)
+
+Lines 61-61 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 343-343:
+ strcpy (pt->name, "none");
+
+Lines 343-343 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 411-414:
+ if (m_bPatchMode)
+ {
+   Patch_SetTextureInfo(pt);
+ }
+
+
+Lines 411-414 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 419-422:
+ =================
+ UpdateSpinners
+ =================
+ 
+
+
+Lines 419-422 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 677-677:
+ ++timo if !g_qeglobals.m_bBrushPrimitMode send a NULL brushprimit_texdef
+
+Lines 677-677 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 683-683:
+ 	Select_SetTexture(pt);
+
+Lines 683-683 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/WIN_DLG.CPP
+Comment from lines 194-194:
+ 				DialogBox(g_qeglobals.d_hInstance, (char *)IDD_ADDCMD, g_qeglobals.d_hwndMain, EditCommandDlgProc);
+
+Lines 194-194 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 355-358:
+ =================
+ GetSelectionIndex
+ =================
+ 
+
+Lines 355-358 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 504-509:
+ ===================================================
+
+   ARBITRARY SIDES
+
+ ===================================================
+ 
+
+
+Lines 504-509 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 559-559:
+ g_bDoTorus = bTorus;
+
+Lines 559-559 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 564-570:
+ ======================================================================
+
+
+ ===================
+ DoAbout
+ ===================
+ 
+
+Lines 564-570 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/ChildFrm.cpp
+studia/zao/Quake-III-Arena/q3radiant/RADBSP.CPP
+studia/zao/Quake-III-Arena/q3radiant/PlugIn.cpp
+Comment from lines 104-104:
+ --return true;
+
+Lines 104-104 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/WIN_Z.CPP
+Comment from lines 156-159:
+ ==============
+ WZ_Create
+ ==============
+ 
+
+Lines 156-159 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/splines/q_shared.cpp
+Comment from lines 113-116:
+ ============
+ Com_StringContains
+ ============
+ 
+
+Lines 113-116 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 142-145:
+ ============
+ Com_Filter
+ ============
+ 
+
+Lines 142-145 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 223-227:
+ ================
+ Com_HashString
+
+ ================
+ 
+
+Lines 223-227 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 248-251:
+ ============
+ Com_SkipPath
+ ============
+ 
+
+Lines 248-251 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 267-270:
+ ============
+ Com_StripExtension
+ ============
+ 
+
+Lines 267-270 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 280-283:
+ ==================
+ Com_DefaultExtension
+ ==================
+ 
+
+Lines 280-283 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 384-387:
+ ================
+ Swap_Init
+ ================
+ 
+
+Lines 384-387 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 415-418:
+ ===============
+ Com_ParseInfos
+ ===============
+ 
+
+Lines 415-418 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 524-529:
+ =============
+ Q_strncpyz
+  
+ Safe strncpy that ensures a trailing zero
+ =============
+ 
+
+Lines 524-529 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 826-829:
+ ===================
+ Info_RemoveKey
+ ===================
+ 
+
+Lines 826-829 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 882-888:
+ ==================
+ Info_Validate
+
+ Some characters are illegal in info strings because they
+ can mess up the server's parsing
+ ==================
+ 
+
+Lines 882-888 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 946-953:
+ ====================================================================
+
+
+
+ ===============
+ ParseHex
+ ===============
+ 
+
+Lines 946-953 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/splines/math_angles.cpp
+studia/zao/Quake-III-Arena/q3radiant/splines/util_str.cpp
+studia/zao/Quake-III-Arena/q3radiant/splines/math_vector.cpp
+studia/zao/Quake-III-Arena/q3radiant/splines/splines.cpp
+Comment from lines 118-118:
+ D_DebugLine(color, from, to);
+
+Lines 118-118 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 180-180:
+ int start = Sys_Milliseconds();
+
+Lines 180-180 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 247-247:
+ assert(activeSegment >=0 && activeSegment < count);
+
+Lines 247-247 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 297-297:
+ for(int i = 2; i < count - 1; i++) {
+
+Lines 297-297 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 360-360:
+ float percent = (float)(baseTime + time - t) / time;
+
+Lines 360-360 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 381-381:
+ Com_MatchToken( text, "{" );
+
+Lines 381-381 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 421-422:
+ Com_UngetToken();
+ Com_MatchToken( text, "}" );
+
+Lines 421-422 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 429-430:
+ s = va("\t\tname %s\n", name.c_str());
+ FS_Write(s.c_str(), s.length(), file);
+
+Lines 429-430 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 452-476:
+ 	if (!cameraSpline.validTime()) {
+ 		buildCamera();
+ 	}
+ 	origin = *cameraSpline.getSegmentPoint(segment);
+ 	
+
+ 	idVec3_t temp;
+
+ 	int numTargets = getTargetSpline()->controlPoints.Num();
+ 	int count = cameraSpline.splineTime.Num();
+ 	if (numTargets == 0) {
+ 		// follow the path
+ 		if (cameraSpline.getActiveSegment() < count - 1) {
+ 			temp = *cameraSpline.splinePoints[cameraSpline.getActiveSegment()+1];
+ 		}
+ 	} else if (numTargets == 1) {
+ 		temp = *getTargetSpline()->controlPoints[0];
+ 	} else {
+ 		temp = *getTargetSpline()->getSegmentPoint(segment);
+ 	}
+
+ 	temp -= origin;
+ 	temp.Normalize();
+ 	direction = temp;
+ 
+
+Lines 452-476 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 495-500:
+ idEntity *ent = NULL;
+ ent = level.FindTarget( ent, events[i]->getParam());
+ if (ent) {
+ 	ent->signal( SIG_TRIGGER );
+ 	ent->ProcessEvent( &EV_Activate, world );
+ }
+
+Lines 495-500 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 518-528:
+ 		// follow the path
+ 		if (cameraSpline.getActiveSegment() < count - 1) {
+ 			temp = *cameraSpline.splinePoints[cameraSpline.getActiveSegment()+1];
+ 			if (temp == origin) {
+ 				int index = cameraSpline.getActiveSegment() + 2;
+ 				while (temp == origin && index < count - 1) {
+ 					temp = *cameraSpline.splinePoints[index++];
+ 				}
+ 			}
+ 		}
+ 
+
+Lines 518-528 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 577-577:
+ targetWaits.Append(i);
+
+Lines 577-577 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 582-610:
+ 				// take the average delay between up to the next five segments
+ 				float adjust = atof(events[i]->getParam());
+ 				int index = events[i]->getSegment();
+ 				total = 0;
+ 				count = 0;
+
+ 				// get total amount of time over the remainder of the segment
+ 				for (j = index; j < cameraSpline.numSegments() - 1; j++) {
+ 					total += cameraSpline.getSegmentTime(j + 1) - cameraSpline.getSegmentTime(j);
+ 					count++;
+ 				}
+
+ 				// multiply that by the adjustment
+ 				double newTotal = total * adjust;
+ 				// what is the difference.. 
+ 				newTotal -= total;
+ 				totalTime += newTotal / 1000;
+
+ 				// per segment difference
+ 				newTotal /= count;
+ 				int additive = newTotal;
+
+ 				// now propogate that difference out to each segment
+ 				for (j = index; j < cameraSpline.numSegments(); j++) {
+ 					cameraSpline.addSegmentTime(j, additive);
+ 					additive += newTotal;
+ 				}
+ 				break;
+ 
+
+Lines 582-610 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/splines/math_quaternion.cpp
+studia/zao/Quake-III-Arena/q3radiant/splines/math_matrix.cpp
+studia/zao/Quake-III-Arena/q3radiant/splines/q_parse.cpp
+Comment from lines 53-56:
+ ===================
+ Com_BeginParseSession
+ ===================
+ 
+
+Lines 53-56 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 69-72:
+ ===================
+ Com_EndParseSession
+ ===================
+ 
+
+Lines 69-72 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 82-85:
+ ===================
+ Com_GetCurrentParseLine
+ ===================
+ 
+
+Lines 82-85 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 91-96:
+ ===================
+ Com_ScriptError
+
+ Prints the script name and line number in the message
+ ===================
+ 
+
+Lines 91-96 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 121-127:
+ ===================
+ Com_UngetToken
+
+ Calling this will make the next Com_Parse return
+ the current token instead of advancing the pointer
+ ===================
+ 
+
+Lines 121-127 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 357-360:
+ ===================
+ Com_Parse
+ ===================
+ 
+
+Lines 357-360 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 370-373:
+ ===================
+ Com_ParseOnLine
+ ===================
+ 
+
+Lines 370-373 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 385-388:
+ ==================
+ Com_MatchToken
+ ==================
+ 
+
+Lines 385-388 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 431-434:
+ =================
+ Com_SkipRestOfLine
+ =================
+ 
+
+Lines 431-434 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 451-454:
+ ====================
+ Com_ParseRestOfLine
+ ====================
+ 
+
+Lines 451-454 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Messaging.cpp
+studia/zao/Quake-III-Arena/q3radiant/QE3.CPP
+Comment from lines 216-219:
+ ===========
+ QE_LoadProject
+ ===========
+ 
+
+Lines 216-219 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 312-316:
+ ===========
+ QE_SaveProject
+ ===========
+ 
+ extern char	*bsp_commands[256];
+
+
+Lines 312-316 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 324-324:
+ sprintf (filename, "%s\\%s.prj", g_projectdir, g_username);
+
+
+Lines 324-324 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 342-345:
+ ===========
+ QE_KeyDown
+ ===========
+ 
+
+Lines 342-345 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 351-357:
+ ===============
+ ConnectEntities
+
+ Sets target / targetname on the two entities selected
+ from the first selected to the secon
+ ===============
+ 
+
+Lines 351-357 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 455-456:
+ 	** other stuff
+ 	
+
+Lines 455-456 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 458-459:
+ Cam_Init ();
+ XY_Init ();
+
+Lines 458-459 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 484-484:
+ entity_t   *e;
+
+Lines 484-484 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 505-512:
+ 	if ( entities.next != NULL )
+ 	{
+ 		for ( e = entities.next ; e != &entities && g_numentities != MAX_MAP_ENTITIES ; e = e->next)
+ 		{
+ 			g_numentities++;
+ 		}
+ 	}
+ 
+
+Lines 505-512 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 527-530:
+ ================
+ I_FloatTime
+ ================
+ 
+
+Lines 527-530 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 558-563:
+ ==============
+ COM_Parse
+
+ Parse a token out of a string
+ ==============
+ 
+
+Lines 558-563 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 652-655:
+ ============
+ ParseCommandLine
+ ============
+ 
+
+Lines 652-655 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 711-714:
+ ==============
+ ParseNum / ParseHex
+ ==============
+ 
+
+Lines 711-714 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/WIN_XY.CPP
+Comment from lines 42-45:
+ ============
+ WXY_WndProc
+ ============
+ 
+
+Lines 42-45 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 166-169:
+ ==============
+ WXY_Create
+ ==============
+ 
+
+Lines 166-169 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/LBMLIB.CPP
+Comment from lines 143-146:
+ =================
+ LoadLBM
+ =================
+ 
+
+Lines 143-146 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 265-276:
+ ============================================================================
+
+ 							WRITE LBM
+
+ ============================================================================
+ 
+
+
+ ==============
+ WriteLBMfile
+ ==============
+ 
+
+Lines 265-276 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 409-412:
+ ==============
+ LoadPCX
+ ==============
+ 
+
+Lines 409-412 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 511-515:
+  
+ ============== 
+ WritePCXfile 
+ ============== 
+ 
+Lines 511-515 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 696-701:
+ =========================================================
+
+ BMP LOADING
+
+ =========================================================
+ 
+
+Lines 696-701 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 878-890:
+ =================================================================
+
+ PCX LOADING
+
+ =================================================================
+ 
+
+
+
+ ==============
+ LoadPCX
+ ==============
+ 
+
+Lines 878-890 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 987-990:
+ ==============
+ LoadPCX32
+ ==============
+ 
+
+Lines 987-990 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1019-1030:
+ =========================================================
+
+ TARGA LOADING
+
+ =========================================================
+ 
+
+
+ =============
+ LoadTGA
+ =============
+ 
+
+Lines 1019-1030 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1288-1297:
+ ===================================================================
+
+
+ =================
+ LoadImage
+
+ Loads any of the supported image types into a cannonical
+ 32 bit format.
+ =================
+ 
+
+Lines 1288-1297 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/ShaderEdit.cpp
+Comment from lines 51-51:
+ }}AFX_MSG_MAP
+
+Lines 51-51 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/BrushScript.cpp
+Comment from lines 273-274:
+ if (g_pHold1)
+ Brush_Free(g_pHold1);
+
+Lines 273-274 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 279-280:
+ if (g_pHold2)
+ Brush_Free(g_pHold2);
+
+Lines 279-280 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 285-286:
+ if (g_pHold3)
+ Brush_Free(g_pHold3);
+
+Lines 285-286 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Radiant.cpp
+studia/zao/Quake-III-Arena/q3radiant/POINTS.CPP
+Comment from lines 126-126:
+ Pointfile_Next ();
+
+Lines 126-126 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/brush_primit.cpp
+Comment from lines 259-259:
+ strcpy(f->texdef.name, token);
+
+Lines 259-259 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/CSG.CPP
+Comment from lines 28-31:
+ =============
+ CSG_MakeHollow
+ =============
+ 
+
+
+Lines 28-31 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 461-464:
+ =============
+ CSG_Subtract
+ =============
+ 
+
+Lines 461-464 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 586-589:
+ =============
+ CSG_Merge
+ =============
+ 
+
+Lines 586-589 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/MRU.CPP
+studia/zao/Quake-III-Arena/q3radiant/IShaders.cpp
+studia/zao/Quake-III-Arena/q3radiant/ZView.cpp
+Comment from lines 49-49:
+ {{AFX_MSG_MAP(CZView)
+
+Lines 49-49 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/StdAfx.cpp
+studia/zao/Quake-III-Arena/q3radiant/ZWnd.cpp
+Comment from lines 50-50:
+ {{AFX_MSG_MAP(CZWnd)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 148-148:
+ qwglSwapBuffers(m_dcZ);
+
+Lines 148-148 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/EditWnd.cpp
+Comment from lines 48-49:
+ {{AFX_MSG_MAP(CEditWnd)
+ }}AFX_MSG_MAP
+
+Lines 48-49 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/BSInput.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CBSInput)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 59-59:
+ {{AFX_DATA_MAP(CBSInput)
+
+Lines 59-59 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/ScriptDlg.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CScriptDlg)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 43-43:
+ }}AFX_DATA_INIT
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CScriptDlg)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 53-53:
+ }}AFX_DATA_MAP
+
+Lines 53-53 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 61-61:
+ }}AFX_MSG_MAP
+
+Lines 61-61 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/RadiantDoc.cpp
+studia/zao/Quake-III-Arena/q3radiant/GLInterface.cpp
+studia/zao/Quake-III-Arena/q3radiant/Bmp.cpp
+Comment from lines 171-171:
+  PrintHeader(&info);
+
+
+Lines 171-171 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/PatchDensityDlg.cpp
+Comment from lines 41-42:
+ {{AFX_DATA_INIT(CPatchDensityDlg)
+ }}AFX_DATA_INIT
+
+Lines 41-42 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 49-49:
+ {{AFX_DATA_MAP(CPatchDensityDlg)
+
+Lines 49-49 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_DATA_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 57-58:
+ {{AFX_MSG_MAP(CPatchDensityDlg)
+ }}AFX_MSG_MAP
+
+Lines 57-58 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/PARSE.CPP
+Comment from lines 121-126:
+ ==============
+ TokenAvailable
+
+ Returns true if there is another token on the line
+ ==============
+ 
+
+Lines 121-126 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/GroupBar.cpp
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CGroupBar)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_DATA_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 61-61:
+ }}AFX_MSG_MAP
+
+Lines 61-61 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/PluginEntities.cpp
+studia/zao/Quake-III-Arena/q3radiant/CommandsDlg.cpp
+Comment from lines 51-51:
+ {{AFX_DATA_MAP(CCommandsDlg)
+
+Lines 51-51 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 53-53:
+ }}AFX_DATA_MAP
+
+Lines 53-53 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 58-59:
+ {{AFX_MSG_MAP(CCommandsDlg)
+ }}AFX_MSG_MAP
+
+Lines 58-59 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/WaveOpen.cpp
+Comment from lines 50-50:
+ {{AFX_MSG_MAP(CWaveOpen)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_MSG_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/RotateDlg.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CRotateDlg)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 45-45:
+ }}AFX_DATA_INIT
+
+Lines 45-45 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ {{AFX_DATA_MAP(CRotateDlg)
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/CamWnd.cpp
+Comment from lines 63-63:
+ {{AFX_MSG_MAP(CCamWnd)
+
+Lines 63-63 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 345-345:
+ m_Camera.draw_mode = cd_texture;
+
+Lines 345-345 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 765-765:
+ qglEnable(GL_LIGHT0);
+
+Lines 765-765 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 821-821:
+ 		qglEnable (GL_LINE_SMOOTH);
+
+Lines 821-821 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 870-870:
+ DrawLightRadius(brush);
+
+Lines 870-870 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1051-1051:
+ 	Sys_EndWait();
+
+Lines 1051-1051 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/GroupDlg.cpp
+Comment from lines 332-347:
+ void Group_SetListToWorld(CStringArray *pArray)
+ {
+ 	if (!g_qeglobals.m_bBrushPrimitMode)
+   {
+     return;
+   }
+   char cBuff[1024];
+   Group_RemoveListFromWorld();
+   int nCount = pArray->GetSize();
+   for (int i = 0; i < nCount; i++)
+   {
+     sprintf(cBuff, GROUPNAME, i);
+     SetKeyValue(world_entity, cBuff, pArray->GetAt(i));
+   }
+ }
+ 
+
+
+Lines 332-347 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 364-421:
+ // this is not very efficient but should get the job done
+ // as our trees should never be too big
+ void Group_BuildTree(CTreeCtrl *pTree)
+ {
+ 	if (!g_qeglobals.m_bBrushPrimitMode)
+   {
+     return;
+   }
+   CStringArray array;
+   int i;
+   CString strTemp;
+   CString strRight;
+
+   //++timo WARNING: this is very dangerous! delete all tree items, without checking the brushes
+   pTree->DeleteAllItems();
+   TVINSERTSTRUCT tvInsert;
+   memset(&tvInsert, 0, sizeof(TVINSERTSTRUCT));
+   tvInsert.hParent = NULL;
+   tvInsert.hInsertAfter = NULL;
+   tvInsert.item.mask = TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE;
+   tvInsert.item.pszText = _T("World");
+   tvInsert.item.iImage = IMG_GROUP;
+   tvInsert.item.iSelectedImage = IMG_GROUP;
+   HTREEITEM hWorld = pTree->InsertItem(&tvInsert);
+
+   Group_GetListFromWorld(&array);
+
+   // groups use @ to delimit levels, the number of @ signs
+   // start with ROOT item
+   // nothing is a peer with world, it is ancestor to everything 
+   // expects things in order so first entry should be a 2nd level item
+   HTREEITEM itemParent = pTree->GetRootItem();
+   HTREEITEM itemLast = itemParent;
+   int nCount = array.GetSize();
+   int nLastLevel = 1;
+   for (i = 0; i < nCount; i++)
+   {
+     strTemp = array.GetAt(i);
+     int nLevel = CountChar(strTemp, GROUP_DELIMETER);
+     if (nLevel < nLastLevel)
+     {
+       int nLevelsUp = nLastLevel - nLevel;
+       while (nLevelsUp-- > 0)
+       {
+         itemParent = pTree->GetParentItem(itemParent);
+       }
+     }
+     else if (nLevel > nLastLevel)
+     {
+       itemParent = itemLast;
+     }
+     nLastLevel = nLevel;
+     char *pLast = strrchr(strTemp, GROUP_DELIMETER);
+     pLast++;
+     itemLast = pTree->InsertItem(pLast, itemParent);
+   }
+ }
+ 
+
+
+Lines 364-421 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 479-479:
+ {{AFX_DATA_MAP(CGroupDlg)
+
+Lines 479-479 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 484-484:
+ }}AFX_DATA_MAP
+
+Lines 484-484 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/PrefsDlg.cpp
+Comment from lines 125-125:
+ {{AFX_DATA_INIT(CPrefsDlg)
+
+Lines 125-125 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 196-196:
+ {{AFX_DATA_MAP(CPrefsDlg)
+
+Lines 196-196 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 294-294:
+ GetDlgItem(IDC_CHECK_NOCLAMP)->EnableWindow(FALSE);
+
+
+Lines 294-294 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 350-350:
+ m_b3Dfx = AfxGetApp()->GetProfileInt(PREF_SECTION, _3DFX_KEY, 0);
+
+Lines 350-350 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 434-434:
+ AfxGetApp()->WriteProfileInt(PREF_SECTION, _3DFX_KEY, m_b3Dfx);
+
+Lines 434-434 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/MapInfo.cpp
+Comment from lines 46-46:
+ }}AFX_DATA_INIT
+
+Lines 46-46 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 53-53:
+ {{AFX_DATA_MAP(CMapInfo)
+
+Lines 53-53 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 58-58:
+ }}AFX_DATA_MAP
+
+Lines 58-58 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 63-64:
+ {{AFX_MSG_MAP(CMapInfo)
+ }}AFX_MSG_MAP
+
+Lines 63-64 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/ENTITY.CPP
+Comment from lines 183-186:
+ ===========
+ Entity_AddToList
+ ===========
+ 
+
+Lines 183-186 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 198-201:
+ ===========
+ Entity_RemoveFromList
+ ===========
+ 
+
+Lines 198-201 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 245-248:
+ =================
+ Entity_MemorySize
+ =================
+ 
+
+Lines 245-248 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 265-268:
+ =================
+ ParseEpair
+ =================
+ 
+
+Lines 265-268 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 476-479:
+ ============
+ Entity_Write
+ ============
+ 
+
+Lines 476-479 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 526-526:
+ VectorSubtract (e->brushes.onext->mins, e->md3Class->mins, origin);
+
+Lines 526-526 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 568-572:
+ 
+ ============
+ Entity_WriteSelected
+ ============
+ 
+
+Lines 568-572 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 595-595:
+ VectorSubtract (e->brushes.onext->mins, e->md3Class->mins, origin);
+
+Lines 595-595 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 626-630:
+ 
+ ============
+ Entity_WriteSelected to a CMemFile
+ ============
+ 
+
+Lines 626-630 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 813-816:
+ ===========
+ Entity_LinkBrush
+ ===========
+ 
+
+Lines 813-816 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 830-833:
+ ===========
+ Entity_UnlinkBrush
+ ===========
+ 
+
+Lines 830-833 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 847-850:
+ ===========
+ Entity_Clone
+ ===========
+ 
+
+Lines 847-850 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/WIN_QE3.CPP
+Comment from lines 266-271:
+ =================
+ Error
+
+ For abnormal program terminations
+ =================
+ 
+
+Lines 266-271 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 316-321:
+ ======================================================================
+
+ FILE DIALOGS
+
+ ======================================================================
+ 
+
+Lines 316-321 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 486-498:
+ =======================================================
+
+ Menu modifications
+
+ =======================================================
+ 
+
+
+ ==================
+ FillBSPMenu
+
+ ==================
+ 
+
+Lines 486-498 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 583-588:
+ ===============
+ CheckBspProcess
+
+ See if the BSP is done yet
+ ===============
+ 
+
+Lines 583-588 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/IEpairs.cpp
+studia/zao/Quake-III-Arena/q3radiant/DialogThick.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CDialogThick)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 44-44:
+ }}AFX_DATA_INIT
+
+Lines 44-44 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 51-51:
+ {{AFX_DATA_MAP(CDialogThick)
+
+Lines 51-51 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 54-54:
+ }}AFX_DATA_MAP
+
+Lines 54-54 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/PatchDialog.cpp
+Comment from lines 43-43:
+ {{AFX_DATA_INIT(CPatchDialog)
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 55-55:
+ }}AFX_DATA_INIT
+
+Lines 55-55 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 63-63:
+ {{AFX_DATA_MAP(CPatchDialog)
+
+Lines 63-63 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/NameDlg.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CNameDlg)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 43-43:
+ }}AFX_DATA_INIT
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 51-51:
+ {{AFX_DATA_MAP(CNameDlg)
+
+Lines 51-51 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 53-53:
+ }}AFX_DATA_MAP
+
+Lines 53-53 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 58-59:
+ {{AFX_MSG_MAP(CNameDlg)
+ }}AFX_MSG_MAP
+
+Lines 58-59 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Win_ent.cpp
+Comment from lines 153-158:
+ =========================
+ EntityListWndProc
+
+ Just to handle enter...
+ =========================
+ 
+
+Lines 153-158 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 183-189:
+ ================
+ GetEntityControls
+
+ Finds the controls from the dialog and
+ moves them to the window
+ ================
+ 
+
+Lines 183-189 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 310-315:
+ ===============================================================
+
+ ENTITY WINDOW
+
+ ===============================================================
+ 
+
+
+
+Lines 310-315 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 335-338:
+ ==============
+ WEnt_Create
+ ==============
+ 
+
+Lines 335-338 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 378-381:
+ ==============
+ CreateEntityWindow
+ ==============
+ 
+
+Lines 378-381 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 415-418:
+ ==============
+ SetInspectorMode
+ ==============
+ 
+
+Lines 415-418 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 543-547:
+ 		if (pModel != NULL)
+ 		{
+ 		GetCachedModel(pModel, vMin, vMax);
+ 		}
+ 		
+
+Lines 543-547 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 743-747:
+ ===============
+ AddProp
+
+ ===============
+ 
+
+Lines 743-747 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 800-804:
+ ===============
+ DelProp
+
+ ===============
+ 
+
+Lines 800-804 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 846-850:
+ ===============
+ EditProp
+
+ ===============
+ 
+
+Lines 846-850 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 899-906:
+ ===============
+ SizeEnitityDlg
+
+ Positions all controls so that the active inspector
+ is displayed correctly and the inactive ones are
+ off the side
+ ===============
+ 
+
+Lines 899-906 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 920-925:
+ ==========================================
+
+
+ 
+  console
+ 
+
+Lines 920-925 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 938-942:
+ ==========================================
+
+ 
+  texture controls
+ 
+
+Lines 938-942 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 966-970:
+ ==========================================
+
+ 
+  entity controls
+ 
+
+Lines 966-970 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1106-1106:
+ 	InvalidateRect(entwindow, NULL, TRUE);
+
+Lines 1106-1106 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1171-1174:
+ =========================
+ EntityWndProc
+ =========================
+ 
+
+Lines 1171-1174 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/Winding.cpp
+Comment from lines 31-34:
+ =============
+ Plane_Equal
+ =============
+ 
+
+Lines 31-34 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 65-68:
+ ============
+ Plane_FromPoints
+ ============
+ 
+
+Lines 65-68 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 75-75:
+ CrossProduct(v2, v1, plane->normal);
+
+Lines 75-75 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 83-86:
+ =================
+ Point_Equal
+ =================
+ 
+
+Lines 83-86 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 100-103:
+ =================
+ Winding_BaseForPlane
+ =================
+ 
+
+Lines 100-103 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 172-175:
+ ==================
+ Winding_Alloc
+ ==================
+ 
+
+Lines 172-175 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 200-203:
+ ==================
+ Winding_Clone
+ ==================
+ 
+
+Lines 200-203 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 236-239:
+ ==============
+ Winding_RemovePoint
+ ==============
+ 
+
+Lines 236-239 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 253-256:
+ =============
+ Winding_InsertPoint
+ =============
+ 
+
+Lines 253-256 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 288-291:
+ ==============
+ Winding_IsTiny
+ ==============
+ 
+
+Lines 288-291 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 317-320:
+ ==============
+ Winding_IsHuge
+ ==============
+ 
+
+Lines 317-320 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 335-338:
+ =============
+ Winding_PlanesConcave
+ =============
+ 
+
+Lines 335-338 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 469-475:
+ =============
+ Winding_SplitEpsilon
+
+   split the input winding with the plane
+   the input winding stays untouched
+ =============
+ 
+
+Lines 469-475 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 695-698:
+ ============
+ Winding_Plane
+ ============
+ 
+
+Lines 695-698 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 717-720:
+ =============
+ Winding_Area
+ =============
+ 
+
+Lines 717-720 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 739-742:
+ =============
+ Winding_Bounds
+ =============
+ 
+
+Lines 739-742 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 766-769:
+ =================
+ Winding_PointInside
+ =================
+ 
+
+Lines 766-769 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 788-791:
+ =================
+ Winding_VectorIntersect
+ =================
+ 
+
+Lines 788-791 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/ECLASS.CPP
+Comment from lines 25-25:
+ #include "qertypes.h"
+
+
+Lines 25-25 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 82-99:
+   while (eclass)
+   {
+     eclass_t* pTemp = eclass->next;
+     delete []eclass->pTriList;
+     
+     if (eclass->modelpath)
+       free(eclass->modelpath);
+ 	  if (eclass->skinpath)			// PGM
+ 		  free(eclass->skinpath);		// PGM
+     
+     free(eclass->name);
+     free(eclass->comments);
+     free(eclass);
+     eclass = pTemp;
+   }
+
+   eclass = NULL;
+ 
+
+Lines 82-99 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 169-169:
+     sprintf (cPath, "%stris.md2", pLocation);
+
+Lines 169-169 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 377-377:
+ 	sprintf (cPath, "%s/%sskin.pcx", ValueForKey(g_qeglobals.d_project_entity, "basepath"), pLocation);
+
+Lines 377-377 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 382-382:
+       sprintf (cPath, "%sskin.pcx", pLocation);
+
+Lines 382-382 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 729-732:
+ =================
+ Eclass_ScanFile
+ =================
+ 
+
+
+Lines 729-732 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/LstToolBar.cpp
+Comment from lines 49-49:
+ }}AFX_MSG_MAP
+
+Lines 49-49 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/DialogTextures.cpp
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CDialogTextures)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_DATA_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 59-59:
+ }}AFX_MSG_MAP
+
+Lines 59-59 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/DRAG.CPP
+Comment from lines 83-86:
+ ===========
+ Drag_Setup
+ ===========
+ 
+
+Lines 83-86 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 134-135:
+ if ((buttons == MK_LBUTTON))
+   g_qeglobals.d_num_move_points = 0;
+
+
+Lines 134-135 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 528-532:
+ 
+ ===========
+ MoveSelection
+ ===========
+ 
+
+Lines 528-532 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 668-670:
+ VectorScale(move, .5, move);
+ for (i=0 ; i<g_qeglobals.d_num_move_points2 ; i++)
+ 	VectorAdd (g_qeglobals.d_move_points2[i], move, g_qeglobals.d_move_points2[i]);
+
+Lines 668-670 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 687-687:
+ if (!Patch_DragScale(b->nPatchID, vTemp2, move))
+
+Lines 687-687 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 746-749:
+ ===========
+ Drag_MouseMoved
+ ===========
+ 
+
+Lines 746-749 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 791-794:
+ ===========
+ Drag_MouseUp
+ ===========
+ 
+
+Lines 791-794 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/CapDialog.cpp
+Comment from lines 41-41:
+ {{AFX_DATA_INIT(CCapDialog)
+
+Lines 41-41 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 43-43:
+ }}AFX_DATA_INIT
+
+Lines 43-43 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 50-50:
+ {{AFX_DATA_MAP(CCapDialog)
+
+Lines 50-50 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 52-52:
+ }}AFX_DATA_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/PlugInManager.cpp
+Comment from lines 92-92:
+  if this thing handles textures
+
+Lines 92-92 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 163-169:
+ 	for (i = 0; i < m_PluginPatches.GetSize(); i++)
+ 	{
+ 		patchMesh_t *pMesh = reinterpret_cast<patchMesh_t*>(m_PluginPatches.GetAt(i));
+ 		if (pMesh->pSymbiot)
+ 			delete pMesh;
+ 	}
+ 	m_PluginPatches.RemoveAll(); 
+
+Lines 163-169 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 467-467:
+ strcpy(f->texdef.name, pData->m_TextureName);
+
+Lines 467-467 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 555-555:
+ strcpy(f->texdef.name, pData->m_TextureName);
+
+Lines 555-555 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 647-648:
+ PGM
+ ==========
+
+
+Lines 647-648 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 658-658:
+ strcpy(f->texdef.name, pName);
+
+Lines 658-658 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 797-797:
+ strcpy(tex.name, strName);
+
+Lines 797-797 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/MainFrm.cpp
+Comment from lines 232-232:
+ {"ForceCameraWalk", 'Q', 0x08, ID_CAMERA_ACTIVE}
+
+Lines 232-232 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 817-817:
+ g_PrefsDlg.LoadPrefs();
+
+Lines 817-817 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1352-1354:
+ SaveWindowState(GetSafeHwnd(), "Radiant::MainWindow");
+ if (m_nCurrentStyle == QR_QE4)
+ SaveWindowPlacement(g_qeglobals.d_hwndEntity, "EntityWindowPlace");
+
+
+Lines 1352-1354 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1475-1476:
+ if (current_texture)
+   free(current_texture);
+
+Lines 1475-1476 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1550-1550:
+ OnKeyDown(nChar, nRepCnt, nFlags);
+
+Lines 1550-1550 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1588-1593:
+   if (g_PrefsDlg.m_bRunBefore == FALSE)
+   {
+     MessageBox("In the following dialog, please make sure the Quake2 .exe information is correct.\nQERadiant will NOT run correctly without this information");
+     g_PrefsDlg.DoModal();
+   }
+ 
+
+
+Lines 1588-1593 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1609-1610:
+ if (m_nCurrentStyle == QR_QE4)
+   LoadWindowPlacement(g_qeglobals.d_hwndEntity, "EntityWindowPlace");
+
+
+Lines 1609-1610 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1786-1790:
+ m_pEditWnd = new CRADEditWnd();
+ m_pEditWnd->Create(NULL, "Console", QE3_STYLE, rect, this, 1238);
+ g_pEdit = m_pEditWnd->GetEditWnd();
+ if (g_pEdit)
+   g_qeglobals.d_hwndEdit = g_pEdit->GetSafeHwnd();
+
+
+Lines 1786-1790 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2646-2646:
+ DoRotate ();
+
+
+Lines 2646-2646 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2784-2784:
+ Terrain_Edit();
+
+Lines 2784-2784 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2815-2815:
+ g_qeglobals.d_select_mode = sel_terrainpoint;
+
+Lines 2815-2815 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2819-2819:
+ 		Terrain_Edit();
+
+Lines 2819-2819 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3556-3557:
+ if (ActiveXY())
+ 	ActiveXY()->UndoCopy();
+
+Lines 3556-3557 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3585-3585:
+  SetRotateMode(false) always works
+
+Lines 3585-3585 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4189-4189:
+  0 - left, 1 - up, 2 - right, 3 - down
+
+Lines 4189-4189 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4373-4373:
+ Patch_AdjustSelectedRowCols(0, 2);
+
+Lines 4373-4373 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4384-4384:
+ Patch_AdjustSelectedRowCols(2, 0);
+
+Lines 4384-4384 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4454-4454:
+ Sys_UpdateWindows(W_ALL);
+
+Lines 4454-4454 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 4466-4466:
+ Sys_UpdateWindows(W_ALL);
+
+Lines 4466-4466 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/TexWnd.cpp
+Comment from lines 58-62:
+ int		texture_mode = GL_NEAREST;
+ int		texture_mode = GL_NEAREST_MIPMAP_NEAREST;
+ int		texture_mode = GL_NEAREST_MIPMAP_LINEAR;
+ int		texture_mode = GL_LINEAR;
+ int		texture_mode = GL_LINEAR_MIPMAP_NEAREST;
+
+Lines 58-62 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 222-225:
+ ==============
+ Texture_InitPalette
+ ==============
+ 
+
+Lines 222-225 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 288-291:
+ ============
+ Texture_SetMode
+ ============
+ 
+
+Lines 288-291 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 397-402:
+ ================
+ R_MipMap
+
+ Operates in place, quartering the size of the texture
+ ================
+ 
+
+Lines 397-402 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 493-493:
+ Handle3DfxTexturing(q, width, height, dest);
+
+
+Lines 493-493 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 538-541:
+ =================
+ Texture_LoadTexture
+ =================
+ 
+
+Lines 538-541 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 616-616:
+ Handle3DfxTexturing(q, width, height, dest);
+
+
+Lines 616-616 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 698-703:
+ ===============
+ Texture_CreateSolid
+
+ Create a single pixel texture of the apropriate color
+ ===============
+ 
+
+Lines 698-703 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 727-727:
+ q->width = q->height = 2;
+
+Lines 727-727 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 750-753:
+ =================
+ Texture_MakeDefault
+ =================
+ 
+
+Lines 750-753 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 798-801:
+ =================
+ Texture_MakeNotexture
+ =================
+ 
+
+Lines 798-801 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1056-1056:
+ Brush_Build(pBrush);
+
+Lines 1056-1056 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1173-1173:
+ Texture_Remove(q);
+
+Lines 1173-1173 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1375-1378:
+ ===============
+ Texture_ForNamePath
+ ===============
+ 
+
+Lines 1375-1378 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1479-1483:
+ ==================
+ FillTextureMenu
+
+ ==================
+ 
+
+Lines 1479-1483 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1612-1615:
+ ==============
+ Texture_ShowDirectory
+ ==============
+ 
+
+Lines 1612-1615 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1626-1627:
+ Texture_Flush(false);
+ Select_Deselect();
+
+Lines 1626-1627 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1653-1660:
+ --if (g_PrefsDlg.m_bUseShaders)
+ --{
+ --  sprintf (dirstring, "%s/scripts/%s", ValueForKey (g_qeglobals.d_project_entity, "basepath"), texture_directory);
+ --  Sys_Printf("loading textures from shader %s\n", dirstring);
+ --  LoadShader(dirstring);
+ --}
+ --else
+ --{
+
+Lines 1653-1660 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1719-1719:
+ --}
+
+
+
+Lines 1719-1719 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1761-1761:
+ Texture_Flush(false);
+
+
+Lines 1761-1761 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1863-1867:
+ ==================
+ Texture_SetInuse
+
+ ==================
+ 
+
+Lines 1863-1867 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1880-1883:
+ ==============
+ Texture_ShowAll
+ ==============
+ 
+
+Lines 1880-1883 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1892-1895:
+ ==============
+ Texture_ShowInuse
+ ==============
+ 
+
+Lines 1892-1895 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 1941-1941:
+ SetInspectorMode(W_TEXTURE);
+
+Lines 1941-1941 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2047-2052:
+ ============
+ Texture_SetTexture
+
+ brushprimit_texdef must be understood as a qtexture_t with width=2 height=2 ( the default one )
+ ============
+ 
+
+Lines 2047-2052 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2211-2216:
+ ==============
+ SelectTexture
+
+   By mouse click
+ ==============
+ 
+
+Lines 2211-2216 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2241-2243:
+ CString s = "notepad ";
+ s += q->shadername;
+ WinExec(s, SW_SHOWNORMAL);	
+
+Lines 2241-2243 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2265-2265:
+ strcpy (tex.name, q->name);
+
+Lines 2265-2265 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2285-2288:
+ ==============
+ Texture_MouseDown
+ ==============
+ 
+
+Lines 2285-2288 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2303-2306:
+ ==============
+ Texture_MouseUp
+ ==============
+ 
+
+Lines 2303-2306 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2312-2315:
+ ==============
+ Texture_MouseMoved
+ ==============
+ 
+
+Lines 2312-2315 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2358-2361:
+ ============
+ Texture_Draw2
+ ============
+ 
+
+Lines 2358-2361 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2616-2619:
+ ==================
+ Texture_Flush
+ ==================
+ 
+
+Lines 2616-2619 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2670-2670:
+ {{AFX_MSG_MAP(CTexWnd)
+
+Lines 2670-2670 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2723-2724:
+ wglMakeCurrent( NULL, NULL );
+ wglDeleteContext( s_hglrcTexture );
+
+Lines 2723-2724 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2735-2735:
+ if ( !wglMakeCurrent( ps.hdc, s_hglrcTexture ) )
+
+Lines 2735-2735 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2817-2824:
+   if (g_PrefsDlg.m_bShaderTest)
+   {
+     m_wndShaders.Create("Show Shaders", WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX, rctEdit, this, 1200);
+     m_wndShaders.ModifyStyleEx(0, WS_EX_CLIENTEDGE, 0);
+     m_wndShaders.SetCheck(g_PrefsDlg.m_bShowShaders);
+     g_nTextureOffset = 25;
+   }
+ 
+
+Lines 2817-2824 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2939-2939:
+ CWnd::OnKeyDown(nChar, nRepCnt, nFlags);
+
+Lines 2939-2939 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 2954-2954:
+ if ( !qwglMakeCurrent(dc.m_hDC, s_hglrcTexture ) )
+
+Lines 2954-2954 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3014-3014:
+ Sys_UpdateWindows(W_TEXTURE);
+
+Lines 3014-3014 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Comment from lines 3031-3032:
+ struct _finddata_t fileinfo;
+ int		handle;
+
+Lines 3031-3032 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+studia/zao/Quake-III-Arena/q3radiant/MATHLIB.CPP
+studia/zao/Quake-III-Arena/q3radiant/TexEdit.cpp
+Comment from lines 52-52:
+ }}AFX_MSG_MAP
+
+Lines 52-52 seems to be commented code.
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
