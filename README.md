@@ -92,4 +92,5 @@ Script was prepared for Python 2.7.3.
 
 
 Dominik Borowiec
+domborow@gmail.com
 January 2013
