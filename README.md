@@ -14,10 +14,10 @@ commented code.
 The tool can be used for calculating Halstead metrics for the given file as
 well.
 
-=============================================================================
-DETAILS:
 
->> Contents:
+=============================================================================
+CONTENT:
+
 src\:
     commentedCodeDetector.py - Script for detecting commented code. Please
         try commentedCodeDetector.py -h to see arguments lists. This script 
@@ -31,8 +31,10 @@ results\:
         Java (with C++ settings for the script): Vuze
         C (with C++ setting for the script): Quake 3 Arena.
 
-    
->>> Algorithm details: <<<
+        
+=============================================================================
+ALGORITHM DETAILS
+        
 Halstead metrics are: Operators count, Distinct operators, Operands count,
 Distinct operand, Program length, Program vocabulary, Volume, Difficulty,
 Effort (see http://en.wikipedia.org/wiki/Halstead_complexity_measures).
@@ -59,7 +61,9 @@ Description of the step c) may be a little bit incomprehensible - please
 look into the code (function analyzeComment) for more concise version :)
 
 
->>> Configuration for other languages: <<<
+=============================================================================
+CONFIGURING FOR OTHER LANGUAGES
+    
 1) Update lists RESERVED_WORDS, PURE_OPERATORS and variables 
 ONELINE_COMMENT_TOKEN, MULTILINE_COMMENT_TOKEN_BEGIN, 
 MULTILINE_COMMENT_TOKEN_END.
@@ -75,13 +79,17 @@ If you configure the script for other languages, please let me know about
 this fact and about the results of your code analysis.
 
 
->>> Various remarks: <<<
+=============================================================================
+VARIOUS REMARKS
+        
 The script has been prepared as a project for Advanced program analysis course
 during my Computer Science studies at University of Warsaw. Lack of tests
 and poor comments are caused by the haste during preparation of it - student's
 life :)
 
 Script was prepared for Python 2.7.3.
+
+
 
 Dominik Borowiec
 January 2013
